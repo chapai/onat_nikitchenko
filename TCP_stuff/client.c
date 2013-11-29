@@ -18,7 +18,6 @@ int calculate(float **result, float startFrom, float calculateTo, float delta)
     char recvBuff[1024];
     struct sockaddr_in serv_addr; 
 
-
     memset(recvBuff, '0',sizeof(recvBuff));
     
     if((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
@@ -32,11 +31,11 @@ int calculate(float **result, float startFrom, float calculateTo, float delta)
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_port = htons(5000); 
 
-    if(inet_pton(AF_INET, '127.0.0.1', &serv_addr.sin_addr) <= 0)
+    if(inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr) <= 0)
     {
         printf("\n inet_pton error occured\n");
         return 1;
-    } 
+    }
 
     if( connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
     {
@@ -44,7 +43,7 @@ int calculate(float **result, float startFrom, float calculateTo, float delta)
        return 1;
     } 
     
-    write(sockfd, *startFrom, sizeof( float )); 
+    write(sockfd, &startFrom, sizeof( float )); 
 
     if(n < 0)
     {
@@ -57,10 +56,8 @@ int calculate(float **result, float startFrom, float calculateTo, float delta)
 	float bufferX = startFrom;
 	int iterationCounter = 0;
 
-	size_t vectorSize = ceil((calculateTo - startFrom)/delta); 
+	size_t vectorSize = ceilf((calculateTo - startFrom)/delta); 
 	*result = malloc(vectorSize * sizeof(float) );
-
-    
 
 
 	//printf("%i\n", sizeof(result));
@@ -78,7 +75,6 @@ int calculate(float **result, float startFrom, float calculateTo, float delta)
 	}
 }
 
-
 int main(int argc, char *argv[])
 {
 
@@ -94,10 +90,7 @@ int main(int argc, char *argv[])
 	scanf ("%e", &delta);
 
 	float * resultArray;
+	
 	calculate(&resultArray, startFrom, calculateTo, delta);
-
-
-
-    
-
+	return 0;
 }

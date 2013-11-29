@@ -8,6 +8,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <time.h> 
+#include <math.h> 
 
 
 float calculate(float x)
@@ -46,7 +47,7 @@ int main(int argc, char *argv[])
         //snprintf(sendBuff, sizeof(sendBuff), "%.24s\r\n", ctime(&ticks));
         
 //        write(connfd, sendBuff, strlen(sendBuff)); 
-        read(connfd, rxBuff, sizeof( float ));
+        read(connfd, &rxBuff, sizeof( float ));
 
         printf("Recieved %e \n", rxBuff);
 
