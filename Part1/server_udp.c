@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+//just for false false and true
+#include <stdbool.h>
+
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -22,7 +25,7 @@ void startServer(char *address, char *port)
     servaddr.sin_port = htons(atoi(port));
     bind(sockfd, (struct sockaddr *)&servaddr, sizeof(servaddr));
     
-    while (1)
+    while (true)
     {
         len = sizeof(cliaddr);  
         
