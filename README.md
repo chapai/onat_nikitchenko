@@ -6,3 +6,7 @@ Thread model: posix
 
 ***
 
+gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) 
+Thread model: posix
+Target: x86_64-linux-gnu
+
