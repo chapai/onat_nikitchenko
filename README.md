@@ -3,6 +3,18 @@
     gcc server_udp.c -o server_udp -lm
     gcc client_udp.c -o client_udp -lm
 
+## Usage
+
+Start server with the following command:
+	
+	~$./ server_udp <Server_host> <Server_port>
+
+Start client with command:
+	
+	~$./ client_udp <Server_host> <Server_port>
+	
+	
+
 ## Tested on 
 
 Mac OS X 10.9
